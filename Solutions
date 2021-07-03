@@ -1,0 +1,63 @@
+// Python Temel - Proje
+1- Bir listeyi düzleştiren (flatten) fonksiyon yazın. Elemanları birden çok katmanlı listtlerden ([[3],2] gibi) oluşabileceği gibi, non-scalar verilerden de oluşabilir. Örnek olarak:
+input: [[1,'a',['cat'],2],[[[3]],'dog'],4,5]
+
+output: [1,'a','cat',2,3,'dog',4,5]
+Solution:
+
+def flatter(input_list):
+    def inside_loop(input_list):
+        for item in input_list:
+            if type(item) != list:
+                flatten_list.append(item)
+            else:
+                inside_loop(item)
+    flatten_list = []
+    inside_loop(input_list)
+    print(flatten_list)
+
+a=[[1,'a',['cat'],2],[[[3]],'dog'],4,5]
+flatter(a)
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2- Verilen listenin içindeki elemanları tersine döndüren bir fonksiyon yazın. Eğer listenin içindeki elemanlar da liste içeriyorsa onların elemanlarını da tersine döndürün. Örnek olarak:
+input: [[1, 2], [3, 4], [5, 6, 7]]
+
+output: [[[7, 6, 5], [4, 3], [2, 1]]
+Solution:
+
+Alternative 1
+---------------
+
+l = [[1, 2], [3, 4], [5, 6, 7]]
+for i in l:
+    i.reverse()
+l[::-1]
+
+
+Alternative 2
+---------------
+
+m=[]
+k=[]
+x = [[1, 2], [3, 4], [5, 6, 7]]
+for i in x:
+    m.append(i[::-1])
+k=m[::-1]
+k
+
+Alternative 3 (Real Solution)
+---------------
+
+def inx(x):
+    m=[]
+    k=[]
+    for i in x:
+        m.append(i[::-1])
+    k=m[::-1]
+    return k
+
+l = [[1, 2], [3, 4], [5, 6, 7]]
+inx(l)
